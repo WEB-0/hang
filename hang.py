@@ -80,12 +80,12 @@ with st.form("form"):
         value=example["question"] if auto_complete else "",
         placeholder=example["question"])
     
-        friendship = st.text_input(
+        friendship = st.text_area(
             "교우관계",
             value=example["friendship"] if auto_complete else "",
             placeholder=example["friendship"])
 
-        career = st.text_input(
+        career = st.text_area(
             "진로 및 진학",
             value=example["career"] if auto_complete else "",
             placeholder=example["career"])
