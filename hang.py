@@ -79,11 +79,11 @@ with st.form("form"):
             placeholder=example["attitude"])
     with col2:
         study = st.text_input(
-            "학업",
+            "학업 및 학습태도",
             value=example["study"] if auto_complete else "",
             placeholder=example["study"])
     question = st.text_area(
-        "학교 생활",
+        "학교 생활 및 생활습관",
         value=example["question"] if auto_complete else "",
         placeholder=example["question"])
     
