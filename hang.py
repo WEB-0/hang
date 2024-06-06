@@ -82,7 +82,6 @@ with st.form("form"):
             "학업",
             value=example["study"] if auto_complete else "",
             placeholder=example["study"])
-    
     question = st.text_area(
         "학교 생활",
         value=example["question"] if auto_complete else "",
