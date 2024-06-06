@@ -110,21 +110,6 @@ if submit:
         )
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
-st.button("복사하기")
+
  if st.button("복사하기"):
-            components.html(f"""
-            <script>
-            function copyToClipboard() {{
-              var copyText = `{message}`;
-              var tempInput = document.createElement("textarea");
-              tempInput.style = "position: absolute; left: -1000px; top: -1000px";
-              tempInput.value = copyText;
-              document.body.appendChild(tempInput);
-              tempInput.select();
-              document.execCommand("copy");
-              document.body.removeChild(tempInput);
-              alert("텍스트가 복사되었습니다!");
-            }}
-            copyToClipboard();
-            </script>
-            """, height=0)
+          
