@@ -66,7 +66,7 @@ prompt_template="""
 
 ---
 성격 및 태도:{attitude}
-학업:{department}
+학업:{study}
 학교 생활: {question}
 ---
 """.strip()
@@ -79,10 +79,10 @@ with st.form("form"):
             value=example["attitude"] if auto_complete else "",
             placeholder=example["attitude"])
     with col2:
-        department = st.text_input(
+        study = st.text_input(
             "학업",
-            value=example["department"] if auto_complete else "",
-            placeholder=example["department"])
+            value=example["study"] if auto_complete else "",
+            placeholder=example["study"])
     
     question = st.text_area(
         "학교 생활",
@@ -92,14 +92,14 @@ with st.form("form"):
 if submit:
     if not attitude:
         st.error("학생의 성격 및 태도를 입력해주세요.")
-    elif not department:
+    elif not study:
         st.error("학생의 학업과 관련된 부분을 입력해주세요")
     elif not question:
         st.error("학생의 학교 생활을 입력해주세요.")
     else:
         prompt = prompt_template.format(
             attitude = attitude,
-            department = department,
+            study = study,
             question = question,
         )
         system_role = "Your role is to be a competent teacher assistant."
@@ -111,20 +111,4 @@ if submit:
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
 
- if st.button("복사하기"):
-    components.html(f"""
-    <script>
-    function copyToClipboard() {{
-      var copyText = `{message}`;
-      var tempInput = document.createElement("textarea");
-      tempInput.style = "position: absolute; left: -1000px; top: -1000px";
-      tempInput.value = copyText;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand("copy");
-      document.body.removeChild(tempInput);
-      alert("텍스트가 복사되었습니다!");
-    }}
-    copyToClipboard();
-    </script>
-    """, height=0)
+
