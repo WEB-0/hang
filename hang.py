@@ -3,7 +3,7 @@ import openai
 
 def request_chat_completion(
     prompt, 
-    system_role="Your role is to be a competent interview assistant.", 
+    system_role="Your role is to be a competent teacher assistant.", 
     model="gpt-4", 
     # gpt-3.5-turbo
     stream=False
@@ -69,7 +69,6 @@ prompt_template="""
 성격:{school}
 학업:{department}
 학교 생활: {question}
-면접 답안:{answer}
 ---
 """.strip()
 
@@ -97,10 +96,6 @@ with st.form("form"):
         "학교 생활",
         value=example["question"] if auto_complete else "",
             placeholder=example["question"])
-    answer = st.text_area(
-        "면접 답안",
-        value=example["answer"] if auto_complete else "",
-            placeholder=example["answer"])
     submit = st.form_submit_button("제출하기")
 if submit:
     if not school:
@@ -109,15 +104,12 @@ if submit:
         st.error("지원하는 과를 입력해주세요")
     elif not question:
         st.error("예상 면접 문항을 입력해주세요.")
-    elif not answer:
-        st.error("면접 답안을 작성해주세요.")
     else:
         prompt = prompt_template.format(
             school = school,
             department = department,
             max_length = max_length // 6,
             question = question,
-            answer = answer
         )
         system_role = "Your role is to be a competent teacher assistant."
         response = request_chat_completion(
