@@ -53,7 +53,7 @@ st.subheader("행발 초안 작성기-제작 김가현!👊")
 auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
-    "school": "성격",
+    "attitude": "성격 및 태도",
     "department": "학업",
     "question": "학교 생활",
 }
@@ -64,7 +64,7 @@ prompt_template="""
 유저가 적은 내용을 바탕으로 문장의 어미는 명사형으로 답변을 작성해주세요.
 
 ---
-성격:{school}
+성격:{attitude}
 학업:{department}
 학교 생활: {question}
 ---
@@ -73,10 +73,10 @@ prompt_template="""
 with st.form("form"):
     col1, col2 = st.columns(2)
     with col1:
-        school = st.text_input(
+        attitude = st.text_input(
             "성격",
-            value=example["school"] if auto_complete else "",
-            placeholder=example["school"])
+            value=example["attitude"] if auto_complete else "",
+            placeholder=example["attitude"])
     with col2:
         department = st.text_input(
             "학업",
@@ -89,7 +89,7 @@ with st.form("form"):
             placeholder=example["question"])
     submit = st.form_submit_button("작성하기")
 if submit:
-    if not school:
+    if not attitude:
         st.error("학생의 성격 및 태도를 입력해주세요.")
     elif not department:
         st.error("학생의 학업과 관련된 부분을 입력해주세요")
@@ -97,7 +97,7 @@ if submit:
         st.error("학생의 학교 생활을 입력해주세요.")
     else:
         prompt = prompt_template.format(
-            school = school,
+            attitude = attitude,
             department = department,
             question = question,
         )
