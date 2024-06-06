@@ -44,33 +44,32 @@ def print_streaming_response_console(response):
     return message
 
 st.set_page_config(
-    page_title="특성화고 면접 도우미✍️",
+    page_title="행발 도우미✍️",
     page_icon="✍️"
 )
 
-st.title("특성화고 면접 도우미🏫")
-st.subheader("합격을 위해! 가현쌤이 응원합니다!👊")
+st.title("행발 도우미🏫")
+st.subheader("행발 초안 작성기-제작 김가현!👊")
 auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
-    "school": "서서울생활과학고등학교",
-    "department": "국제조리학과",
+    "school": "성격",
+    "department": "학업",
     "max_length": 700,
-    "question": "지원한 동기가 무엇인지 말해보세요.",
+    "question": "학교 생활",
     "answer": "어린 시절부터 요리 좋아했고 음식을 나누는 것에 기쁨을 느낌."
     # "answer": "저는 음식을 통해 사람들에게 기쁨과 만족을 주는 것에 열정을 느끼고 있습니다. 어린 시절부터 가정에서 요리를 통해 사람들을 행복하게 해본 경험이 있고, 음식을 창조하는 과정과 예술적 표현에 흥미를 느끼고 있습니다. 조리학 공부를 통해 음식을 예술로써 표현하고 사회적으로 소통과 이해를 촉진하는 방법을 배우고 싶습니다. 최종적으로, 레스토랑 쉐프로서 사람들에게 즐거움을 주는 직업을 향해 나아가고 싶습니다."
 }
 
 prompt_template="""
-고등학교 면접 질문에 대한 답을 작성해야합니다.
-답변해야하는 예상 질문과 이에 관련된 유저의 답안을 참고해서 예시 답변을 작성해주세요.
+학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도를 포함한 종합의견을 작성해주세요. 각 항목은 다음 단어들을 사용해 작성해주세요. 제가 제시하지 않는 내용은 만들지 말고 문장은 이어지게, 문장의 어미는 명사형으로 적어주세요.
 반드시 {max_length} 단어 이내로 작성해야 합니다.
 
 
 ---
-지원 학교:{school}
-지원 과:{department}
-면접 문제: {question}
+성격:{school}
+학업:{department}
+학교 생활: {question}
 면접 답안:{answer}
 ---
 """.strip()
@@ -79,12 +78,12 @@ with st.form("form"):
     col1, col2, col3 = st.columns(3)
     with col1:
         school = st.text_input(
-            "지원 학교",
+            "성격",
             value=example["school"] if auto_complete else "",
             placeholder=example["school"])
     with col2:
         department = st.text_input(
-            "지원 과",
+            "학업",
             value=example["department"] if auto_complete else "",
             placeholder=example["department"])
     with col3:
@@ -96,7 +95,7 @@ with st.form("form"):
             value=700
     )
     question = st.text_area(
-        "면접 문제",
+        "학교 생활",
         value=example["question"] if auto_complete else "",
             placeholder=example["question"])
     answer = st.text_area(
