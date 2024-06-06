@@ -1,14 +1,10 @@
 import streamlit as st
 import openai
-import pandas as pd
-
-
 
 def request_chat_completion(
     prompt, 
     system_role="Your role is to be a competent teacher assistant.", 
     model="gpt-4o", 
-    # gpt-3.5-turbo
     stream=False
 ):
     messages=[
@@ -16,9 +12,9 @@ def request_chat_completion(
         {"role": "user", "content": prompt}
     ]
     response = openai.ChatCompletion.create(
-    model=model,
-    messages=messages,
-    stream=stream
+        model=model,
+        messages=messages,
+        stream=stream
     )
     return response
 
@@ -35,17 +31,6 @@ def print_streaming_response(response):
     placeholder.markdown(message)
     return message
 
-def print_streaming_response_console(response):
-    message = ""
-    for chunk in response:
-        delta = chunk.choices[0]["delta"]
-        if "content" in delta:
-            message += delta["content"]
-            print(delta["content"], end="")
-        else:
-            break
-    return message
-
 st.set_page_config(
     page_title="행발 도우미✍️",
     page_icon="✍️"
@@ -54,26 +39,29 @@ st.set_page_config(
 st.title("행발 도우미🏫")
 st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
 
-
-
-auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
+auto_complete = st.checkbox("👈누르면 예시가 나옵니다.")
 
 example = {
     "attitude": "문화적 감수성이 풍부하고 차분한",
     "study": "학업",
     "question": "학교 생활",
+    "habit": "생활습관",
+    "friendship": "교우관계",
+    "career": "진로 및 진학"
 }
 
-
-prompt_template="""
-학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도를 포함한 종합의견을 작성해야합니다.
+prompt_template = """
+학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도, 생활습관, 교우관계, 진로 및 진학을 포함한 종합의견을 작성해야합니다.
 
 유저가 적은 내용을 바탕으로 문장의 어미는 명사형으로 자연스러운 답변을 작성해주세요.
 
 ---
-성격 및 태도:{attitude}
-학업:{study}
+성격 및 태도: {attitude}
+학업: {study}
 학교 생활: {question}
+생활습관: {habit}
+교우관계: {friendship}
+진로 및 진학: {career}
 ---
 """.strip()
 
@@ -92,8 +80,25 @@ with st.form("form"):
     question = st.text_area(
         "학교 생활",
         value=example["question"] if auto_complete else "",
-            placeholder=example["question"])
+        placeholder=example["question"])
+    col3, col4, col5 = st.columns(3)
+    with col3:
+        habit = st.text_input(
+            "생활습관",
+            value=example["habit"] if auto_complete else "",
+            placeholder=example["habit"])
+    with col4:
+        friendship = st.text_input(
+            "교우관계",
+            value=example["friendship"] if auto_complete else "",
+            placeholder=example["friendship"])
+    with col5:
+        career = st.text_input(
+            "진로 및 진학",
+            value=example["career"] if auto_complete else "",
+            placeholder=example["career"])
     submit = st.form_submit_button("작성하기")
+
 if submit:
     if not attitude:
         st.error("학생의 성격 및 태도를 입력해주세요.")
@@ -101,11 +106,20 @@ if submit:
         st.error("학생의 학업과 관련된 부분을 입력해주세요")
     elif not question:
         st.error("학생의 학교 생활을 입력해주세요.")
+    elif not habit:
+        st.error("학생의 생활습관을 입력해주세요.")
+    elif not friendship:
+        st.error("학생의 교우관계를 입력해주세요.")
+    elif not career:
+        st.error("학생의 진로 및 진학을 입력해주세요.")
     else:
         prompt = prompt_template.format(
-            attitude = attitude,
-            study = study,
-            question = question
+            attitude=attitude,
+            study=study,
+            question=question,
+            habit=habit,
+            friendship=friendship,
+            career=career
         )
         system_role = "Your role is to be a competent teacher assistant."
         response = request_chat_completion(
