@@ -99,7 +99,6 @@ if submit:
         prompt = prompt_template.format(
             school = school,
             department = department,
-            max_length = max_length // 6,
             question = question,
         )
         system_role = "Your role is to be a competent teacher assistant."
