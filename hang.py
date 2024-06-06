@@ -111,7 +111,7 @@ if submit:
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
 
- copy_button = f"""
+         copy_button = f"""
         <button onclick="copyToClipboard()">복사하기</button>
         <script>
         function copyToClipboard() {{
