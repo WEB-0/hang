@@ -55,7 +55,6 @@ auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 example = {
     "school": "성격",
     "department": "학업",
-    "max_length": 700,
     "question": "학교 생활",
 }
 
@@ -83,13 +82,6 @@ with st.form("form"):
             "학업",
             value=example["department"] if auto_complete else "",
             placeholder=example["department"])
-    with col3:
-        max_length= st.number_input(
-            "최대 길이",
-            min_value=100,
-            max_value=2000,
-            step=100,
-            value=700
     )
     question = st.text_area(
         "학교 생활",
