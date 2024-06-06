@@ -130,9 +130,3 @@ if submit:
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
 
-
-st.write("행발 키워드 추천")
-st.write(pd.DataFrame({
-    'second column': [10, 20, 30, 40]
-}))
-
