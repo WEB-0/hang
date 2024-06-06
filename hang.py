@@ -110,7 +110,7 @@ if submit:
         )
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
-
+st.button("복사하기")
  if st.button("복사하기"):
             components.html(f"""
             <script>
