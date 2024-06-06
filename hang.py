@@ -83,14 +83,14 @@ with st.form("form"):
             placeholder=example["attitude"])
     with col2:
         study = st.text_input(
-            "학업 및 학습 태도",
+            "학업",
             value=example["study"] if auto_complete else "",
             placeholder=example["study"])
     question = st.text_area(
         "학교 생활",
         value=example["question"] if auto_complete else "",
         placeholder=example["question"])
-col3, col4 = st.columns(2)
+    col3, col4 = st.columns(2)
     with col3:
         friendship = st.text_input(
             "교우관계",
@@ -130,4 +130,3 @@ if submit:
         )
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
-
