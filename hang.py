@@ -43,10 +43,10 @@ auto_complete = st.checkbox("👈누르면 예시가 나옵니다.")
 
 example = {
     "attitude": "문화적 감수성이 풍부하고 차분한",
-    "study": "학업",
-    "question": "학교 생활",
+    "study": "스스로 학습 계획을 세우고 적극적으로 실행",
+    "question": "효과적인 시간 관리를 통해 학업과 여가 시간을 잘 조율",
     "friendship": "교우관계",
-    "career": "진로 및 진학"
+    "career": "다양한 직업 탐색 활동에 참여하며 자신의 진로를 적극적으로 탐구"
 }
 
 prompt_template = """
