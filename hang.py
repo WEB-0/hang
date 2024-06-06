@@ -64,7 +64,7 @@ prompt_template="""
 유저가 적은 내용을 바탕으로 문장의 어미는 명사형으로 자연스러운 답변을 작성해주세요.
 
 ---
-성격:{attitude}
+성격 및 태도:{attitude}
 학업:{department}
 학교 생활: {question}
 ---
@@ -74,7 +74,7 @@ with st.form("form"):
     col1, col2 = st.columns(2)
     with col1:
         attitude = st.text_input(
-            "성격",
+            "성격 및 태도",
             value=example["attitude"] if auto_complete else "",
             placeholder=example["attitude"])
     with col2:
