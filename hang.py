@@ -4,7 +4,7 @@ import openai
 def request_chat_completion(
     prompt, 
     system_role="Your role is to be a competent teacher assistant.", 
-    model="gpt-4", 
+    model="gpt-4o", 
     # gpt-3.5-turbo
     stream=False
 ):
