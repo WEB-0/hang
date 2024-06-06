@@ -30,7 +30,18 @@ def print_streaming_response(response):
             break
     placeholder.markdown(message)
     return message
-
+    
+def print_streaming_response_console(response):
+    message = ""
+    for chunk in response:
+        delta = chunk.choices[0]["delta"]
+        if "content" in delta:
+            message += delta["content"]
+            print(delta["content"], end="")
+        else:
+            break
+    return message
+    
 st.set_page_config(
     page_title="행발 도우미✍️",
     page_icon="✍️"
@@ -39,7 +50,7 @@ st.set_page_config(
 st.title("행발 도우미🏫")
 st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
 
-auto_complete = st.checkbox("👈누르면 예시가 나옵니다.")
+auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
     "attitude": "문화적 감수성이 풍부하고 차분한",
