@@ -63,7 +63,6 @@ example = {
 
 prompt_template="""
 학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도를 포함한 종합의견을 작성해주세요. 각 항목은 다음 단어들을 사용해 작성해주세요. 문장의 어미는 명사형으로 적어주세요.
-반드시 {max_length} 단어 이내로 작성해야 합니다.
 
 
 ---
@@ -120,7 +119,7 @@ if submit:
             question = question,
             answer = answer
         )
-        system_role = "Your role is to be a competent interview assistant."
+        system_role = "Your role is to be a competent teacher assistant."
         response = request_chat_completion(
             prompt=prompt,
             system_role=system_role,
