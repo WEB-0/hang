@@ -87,14 +87,14 @@ with st.form("form"):
         "학교 생활",
         value=example["question"] if auto_complete else "",
             placeholder=example["question"])
-    submit = st.form_submit_button("제출하기")
+    submit = st.form_submit_button("작성하기")
 if submit:
     if not school:
-        st.error("지원하는 학교를 입력해주세요.")
+        st.error("학생의 성격 및 태도를 입력해주세요.")
     elif not department:
-        st.error("지원하는 과를 입력해주세요")
+        st.error("학생의 학업과 관련된 부분을 입력해주세요")
     elif not question:
-        st.error("예상 면접 문항을 입력해주세요.")
+        st.error("학생의 학교 생활을 입력해주세요.")
     else:
         prompt = prompt_template.format(
             school = school,
