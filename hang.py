@@ -119,7 +119,6 @@ if submit:
 
 st.write("행발 키워드 추천")
 st.write(pd.DataFrame({
-     'second column11': ['친절한열정적인'],
     'second column': [10, 20, 30, 40]
 }))
 
