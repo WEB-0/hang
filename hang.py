@@ -91,13 +91,13 @@ with st.form("form"):
         "학교 생활",
         value=example["question"] if auto_complete else "",
         placeholder=example["question"])
-col4, col5 = st.columns(2)
-    with col4:
+col3, col4 = st.columns(2)
+    with col3:
         friendship = st.text_input(
             "교우관계",
             value=example["friendship"] if auto_complete else "",
             placeholder=example["friendship"])
-    with col5:
+    with col4:
         career = st.text_input(
             "진로 및 진학",
             value=example["career"] if auto_complete else "",
