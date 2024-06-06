@@ -42,7 +42,7 @@ st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
 auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
-    "attitude": "이 풍부하고 차분한",
+    "attitude": "문화적 감수성이 풍부하고 차분한",
     "study": "스스로 학습 계획을 세우고 적극적으로 실행",
     "question": "효과적인 시간 관리를 통해 학업과 여가 시간을 잘 조율",
     "friendship": "다양한 친구들과 잘 어울리며, 원만한 대인 관계",
