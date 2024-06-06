@@ -54,7 +54,7 @@ auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
     "attitude": "문화적 감수성이 풍부하고 차분한",
-    "department": "학업",
+    "study": "학업",
     "question": "학교 생활",
 }
 
