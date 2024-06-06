@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-import streamlit.components.v1 as components
 
 def request_chat_completion(
     prompt, 
