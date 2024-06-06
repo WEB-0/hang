@@ -56,7 +56,7 @@ st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
 
 st.write("행발 키워드 추천")
 st.write(pd.DataFrame({
-     'second column': [10, 20, 30, 40],
+     'second column': [친절한, 20, 30, 40],
     'second column': [10, 20, 30, 40]
 }))
 
