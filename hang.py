@@ -1,5 +1,8 @@
 import streamlit as st
 import openai
+import pandas as pd
+
+
 
 def request_chat_completion(
     prompt, 
@@ -57,6 +60,12 @@ example = {
     "study": "학업",
     "question": "학교 생활",
 }
+
+st.write("Here's our first attempt at using data to create a table:")
+st.write(pd.DataFrame({
+    'first column': [1, 2, 3, 4],
+    'second column': [10, 20, 30, 40]
+}))
 
 prompt_template="""
 학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도를 포함한 종합의견을 작성해야합니다.
