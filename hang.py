@@ -54,11 +54,6 @@ st.set_page_config(
 st.title("행발 도우미🏫")
 st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
 
-st.write("행발 키워드 추천")
-st.write(pd.DataFrame({
-     'second column11': ['친절한', 20, 30, 40],
-    'second column': [10, 20, 30, 40]
-}))
 
 
 auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
@@ -122,4 +117,9 @@ if submit:
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
 
 
+st.write("행발 키워드 추천")
+st.write(pd.DataFrame({
+     'second column11': ['친절한', 20, 30, 40],
+    'second column': [10, 20, 30, 40]
+}))
 
