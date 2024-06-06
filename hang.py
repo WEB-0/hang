@@ -63,8 +63,8 @@ prompt_template = """
 
 ---
 성격 및 태도: {attitude}
-학업: {study}
-학교 생활: {question}
+학업 및 학습태도: {study}
+학교 생활 및 생활습관: {question}
 교우관계: {friendship}
 진로 및 진학: {career}
 ---
