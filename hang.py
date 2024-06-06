@@ -39,8 +39,8 @@ st.set_page_config(
 st.title("행발 도우미🏫")
 st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
 
-md = st.text_area('Type in your markdown string (without outer quotes)',
-                  "Happy Streamlit-ing! :balloon:")
+md = st.text_area(st.markdown('Type in your markdown string (without outer quotes)',
+                  "Happy Streamlit-ing! :balloon:"))
 
 auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
