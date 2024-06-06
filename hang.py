@@ -54,7 +54,7 @@ auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
     "attitude": "문화적 감수성이 풍부하고 차분한",
-    "study": "학업",
+    "study": "학업 및 학습태도",
     "question": "학교 생활",
     "habit": "생활습관",
     "friendship": "교우관계",
@@ -68,7 +68,7 @@ prompt_template = """
 
 ---
 성격 및 태도: {attitude}
-학업: {study}
+학업 및 학습태도: {study}
 학교 생활: {question}
 생활습관: {habit}
 교우관계: {friendship}
