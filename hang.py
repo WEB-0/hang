@@ -68,7 +68,7 @@ prompt_template = """
 ---
 성격 및 태도: {attitude}
 학업 및 학습태도: {study}
-학교 생활 및 생활습관: {habit}
+학교 생활 및 생활습관: {question}
 교우관계: {friendship}
 진로 및 진학: {career}
 ---
@@ -86,10 +86,10 @@ with st.form("form"):
             "학업",
             value=example["study"] if auto_complete else "",
             placeholder=example["study"])
-       habit = st.text_area(
+    question = st.text_area(
         "학교 생활",
-        value=example["habit"] if auto_complete else "",
-        placeholder=example["habit"])
+        value=example["question"] if auto_complete else "",
+        placeholder=example["question"])
     col3, col4 = st.columns(2)
     with col3:
         friendship = st.text_input(
@@ -108,7 +108,7 @@ if submit:
         st.error("학생의 성격 및 태도를 입력해주세요.")
     elif not study:
         st.error("학생의 학업과 관련된 부분을 입력해주세요")
-    elif not habit:
+    elif not question:
         st.error("학생의 학교 생활을 입력해주세요.")
     elif not friendship:
         st.error("학생의 교우관계를 입력해주세요.")
@@ -118,7 +118,7 @@ if submit:
         prompt = prompt_template.format(
             attitude=attitude,
             study=study,
-            habit=habit,
+            question=question,
             friendship=friendship,
             career=career
         )
