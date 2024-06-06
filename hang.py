@@ -98,7 +98,7 @@ if submit:
         prompt = prompt_template.format(
             attitude = attitude,
             study = study,
-            question = question,
+            question = question
         )
         system_role = "Your role is to be a competent teacher assistant."
         response = request_chat_completion(
