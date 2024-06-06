@@ -63,12 +63,12 @@ example = {
 prompt_template = """
 학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도, 생활습관, 교우관계, 진로 및 진학을 포함한 종합의견을 작성해야합니다.
 
-유저가 적은 내용을 바탕으로 학생에 대한 종합의견을 작성해주세요. 문장의 어미는 명사형으로 자연스러운 답변을 작성해주세요.
+문장의 어미는 명사형으로 자연스러운 답변을 작성해주세요.
 
 ---
 성격 및 태도: {attitude}
 학업 및 학습태도: {study}
-학교 생활 및 생활습관: {question}
+학교 생활 및 생활습관: {habit}
 교우관계: {friendship}
 진로 및 진학: {career}
 ---
@@ -88,8 +88,8 @@ with st.form("form"):
             placeholder=example["study"])
     question = st.text_area(
         "학교 생활",
-        value=example["question"] if auto_complete else "",
-        placeholder=example["question"])
+        value=example["habit"] if auto_complete else "",
+        placeholder=example["habit"])
     col3, col4 = st.columns(2)
     with col3:
         friendship = st.text_input(
@@ -108,7 +108,7 @@ if submit:
         st.error("학생의 성격 및 태도를 입력해주세요.")
     elif not study:
         st.error("학생의 학업과 관련된 부분을 입력해주세요")
-    elif not question:
+    elif not habit:
         st.error("학생의 학교 생활을 입력해주세요.")
     elif not friendship:
         st.error("학생의 교우관계를 입력해주세요.")
@@ -118,7 +118,7 @@ if submit:
         prompt = prompt_template.format(
             attitude=attitude,
             study=study,
-            question=question,
+            habit=habit,
             friendship=friendship,
             career=career
         )
