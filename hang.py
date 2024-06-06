@@ -53,6 +53,9 @@ st.set_page_config(
 
 st.title("행발 도우미🏫")
 st.subheader("행발 초안 작성기-제작 김가현 공유 금지!👊")
+
+
+
 auto_complete = st.toggle("👈누르면 예시가 나옵니다.")
 
 example = {
@@ -61,11 +64,6 @@ example = {
     "question": "학교 생활",
 }
 
-st.write("Here's our first attempt at using data to create a table:")
-st.write(pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
-}))
 
 prompt_template="""
 학생의 성격 및 태도, 책임감 및 자발적인 행동, 학업에 대한 태도 및 탐구 정신, 학교생활에서의 역할 및 참여도를 포함한 종합의견을 작성해야합니다.
@@ -117,5 +115,15 @@ if submit:
         )
         message = print_streaming_response(response)
         st.markdown(f"**공백 포함 글자 수: {len(message)}**")
+
+st.write("행발 키워드 추천")
+st.write(pd.DataFrame({
+    '성격 및 태도': [
+        '친절한', '성실한', '적극적인', '밝은', '신중한', '침착한', '책임감 있는', '활기찬', '창의적인', '결단력 있는',
+        '유쾌한', '온화한', '관대한', '호기심 많은', '진취적인', '열정적인', '정직한', '신뢰할 수 있는', '외향적인', '인내심 있는',
+        '협력적인', '존경심 있는', '학구열이 높은', '주도적인', '규율을 잘 지키는', '긍정적인', '배려심 있는', '끈기 있는', '성취지향적인', '열정적인'
+    ],
+    'second column': [10, 20, 30, 40]
+}))
 
 
